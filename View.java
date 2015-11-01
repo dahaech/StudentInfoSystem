@@ -1,4 +1,5 @@
 import java.sql.*;
+import org.h2.*;
 
 public class View {
 	int id;
@@ -13,25 +14,24 @@ public class View {
 		Connection con = null;
 		Statement stmt = null;
 		try{
-			Class.forName("com.mysql.jdbc.Driver");
-			//System.out.println("driver lodding success");
-			
-			String url = "jdbc:mysql://localhost/StudentInfoTable";
-			String user = "kna4898@gmail.com";
-			String passwd = "Oh!941129or";
+			Class.forName("org.h2.Driver");
+
+			String url = "jdbc:h2:~/test";
+			String user = "sa";
+			String passwd = "";
 			
 			con = DriverManager.getConnection(url, user, passwd);
-			//System.out.println("connection success");
+			stmt = con.createStatement();
 			
 			String sqlCreate = "CREATE TABLE IF NOT EXISTS StudentInfoTable ("
-					+"id INTEGER NOT NULL,"
-					+"name TEXT(20), "
-					+"phone TEXT(22), "
-					+"PRIMARY KEY(id)"
+					+"id INT PRIMARY KEY,"
+					+"name CHAR(20), "
+					+"department CHAR(20),"
+					+"phone CHAR(22) "
+					//+"PRIMARY KEY(id)"
 					+");";
-			stmt.executeQuery(sqlCreate);
-			String sqlView = "SELECT * FROM table WHERE id = "+ id + ";";
-			stmt = con.createStatement();
+			stmt.execute(sqlCreate);
+			String sqlView = "SELECT * FROM StudentInfoTable WHERE id = "+id+";";
 			
 			ResultSet result = stmt.executeQuery(sqlView);
 			boolean isThereAnyData = result.next();
