@@ -44,7 +44,7 @@ public class View {
 				//System.out.println("no data");
 			}
 			while(isThereAnyData){
-				this.id = result.getInt("id");
+				this.id = result.getInt("ID");
 				name = result.getString("NAME");
 				department = result.getString("DEPARTMENT");
 				phone = result.getString("PHONE");
