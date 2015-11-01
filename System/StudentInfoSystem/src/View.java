@@ -28,7 +28,6 @@ public class View {
 					+"name CHAR(20), "
 					+"department CHAR(20),"
 					+"phone CHAR(22) "
-					//+"PRIMARY KEY(id)"
 					+");";
 			stmt.execute(sqlCreate);
 			String sqlView = "SELECT * FROM StudentInfoTable WHERE id = "+id+";";
