@@ -27,9 +27,9 @@ public class View {
 			
 			ResultSet result = stmt.executeQuery(sql);
 			while(result.next()){
-				name = result.getString("name");
-				department = result.getString("department");
-				phone = result.getString("phone");
+				name = result.getString("NAME");
+				department = result.getString("DEPARTMENT");
+				phone = result.getString("PHONE");
 			}
 			
 			con.close();
