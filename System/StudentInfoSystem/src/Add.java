@@ -41,5 +41,6 @@ public class Add {
 	private String addToDB(int id, String name, String department, String phone){
 		return "INSERT INTO StudentInfoTable VALUES("+id+", '"+name+"', '"+department+"','"+phone+"');";
 	}
+//hi
 
 }
