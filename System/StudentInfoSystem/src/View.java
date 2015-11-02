@@ -16,7 +16,7 @@ public class View {
 		try{
 			Class.forName("org.h2.Driver");
 
-			String url = "jdbc:h2:~/test";
+			String url = "jdbc:h2:~/StudentInfo";
 			String user = "sa";
 			String passwd = "";
 			
