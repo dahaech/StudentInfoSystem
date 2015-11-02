@@ -6,13 +6,15 @@ public class Update {
 	int id;
 	String phone;
 	
-	public Update(int id, String phone){
-		updateStudent(id, phone);
+	public void updateStudent(int id, String phone){
+		updateDB(id, phone);
 	}
 	
-	private void updateStudent(int id, String phone){
+	private void updateDB(int id, String phone){
+		
 		Connection con = null;
 		Statement stmt = null;
+		
 		try{
 			Class.forName("org.h2.Driver");
 
@@ -30,18 +32,15 @@ public class Update {
 					+"phone CHAR(22) "
 					+");";
 			stmt.execute(sqlCreate);
-			String sqlUpdate = updateDB(id, phone);
+			String sqlUpdate = "UPDATE StudentInfoTable SET "+"PHONE="+phone+"WHERE ID="+id+";";
 			stmt.execute(sqlUpdate);
 			
 			con.close();
 			stmt.close();
+			
 		}catch(Exception e){
 			System.out.println(e);
 		}
-	}
-	
-	private String updateDB(int id, String phone){
-		return "UPDATE StudentInfoTable SET "+"PHONE="+phone+"WHERE ID="+id+";";
 	}
 	
 }

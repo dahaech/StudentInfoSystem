@@ -8,9 +8,14 @@ public class Add {
 	String name, department, phone;
 	
 	public void addStudent(int id, String name, String department, String phone){
-
+		addToDB(id, name, department, phone);
+	}
+	
+	private void addToDB(int id, String name, String department, String phone){
+		
 		Connection con = null;
 		Statement stmt = null;
+		
 		try{
 			Class.forName("org.h2.Driver");
 
@@ -28,7 +33,7 @@ public class Add {
 					+"phone CHAR(22) "
 					+");";
 			stmt.execute(sqlCreate);
-			String sqlAdd = addToDB(id,name, department, phone);
+			String sqlAdd = "INSERT INTO StudentInfoTable VALUES("+id+", '"+name+"', '"+department+"','"+phone+"');";
 			stmt.execute(sqlAdd);
 			
 			con.close();
@@ -37,9 +42,8 @@ public class Add {
 			System.out.println(e);
 		}
 	}
-	
-	private String addToDB(int id, String name, String department, String phone){
-		return "INSERT INTO StudentInfoTable VALUES("+id+", '"+name+"', '"+department+"','"+phone+"');";
-	}
 
 }
+
+
+

@@ -6,8 +6,14 @@ public class Delete {
 	int id;
 	
 	public void deleteStudent(int id){
+		deleteFromDB(id);
+	}
+	
+	private void deleteFromDB(int id){
+		
 		Connection con = null;
 		Statement stmt = null;
+		
 		try{
 			Class.forName("org.h2.Driver");
 
@@ -25,18 +31,15 @@ public class Delete {
 					+"phone CHAR(22) "
 					+");";
 			stmt.execute(sqlCreate);
-			String sqlDelete = deleteFromDB(id);
+			String sqlDelete = "DELETE FROM StudentInfoTable WHERE ID="+id+";";
 			stmt.execute(sqlDelete);
 			
 			con.close();
 			stmt.close();
+			
 		}catch(Exception e){
 			System.out.println(e);
 		}
-	}
-	
-	private String deleteFromDB(int id){
-		return "DELETE FROM StudentInfoTable WHERE ID="+id+";";
 	}
 	
 }

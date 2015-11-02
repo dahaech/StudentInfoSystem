@@ -49,14 +49,13 @@ class Main
 				id = sc.nextInt();
 				System.out.println("핸드폰 번호 :");
 				phone = sc1.nextLine();
-			    mUpdate.updateStudent(id, phone);
+				mUpdate.updateStudent(id, phone);
 			    }
 			else if (num == 3){
 
 				System.out.println("*Delete Student");
 				System.out.println("삭제하려는 학생 아이디 :");
 				id = sc.nextInt();
-
 				mDelete.deleteStudent(id);
 				}
 			else if (num == 4){

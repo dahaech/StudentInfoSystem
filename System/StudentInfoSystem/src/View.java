@@ -5,14 +5,16 @@ public class View {
 	int id;
 	String name, department, phone;
 	
-	public View(int id){
-		getStudentInfo(id);
-		display();
+	public void viewStudent(int id) {
+		   getStudentInfo(id);
+		   display();
 	}
 	
 	private void getStudentInfo(int id){
+		
 		Connection con = null;
 		Statement stmt = null;
+		
 		try{
 			Class.forName("org.h2.Driver");
 
@@ -35,12 +37,11 @@ public class View {
 			ResultSet result = stmt.executeQuery(sqlView);
 			boolean isThereAnyData = result.next();
 			if(isThereAnyData==false){
-				this.id = id;
+				System.out.println("!! NO SUCH STUDENT !!");
+				this.id = 0;
 				name = "no student";
 				department = "no department";
 				phone = "no phone number";
-				
-				//System.out.println("no data");
 			}
 			while(isThereAnyData){
 				this.id = result.getInt("ID");
@@ -53,16 +54,17 @@ public class View {
 			}
 			
 			con.close();
+			
 		}catch(Exception e){
 			System.out.println(e);
-		}
+		}		
 	}
 	
 	private void display(){
 		System.out.println("id           : " + id);
 		System.out.println("name         : " + name);
 		System.out.println("department   : " + department);
-		System.out.println("phone number : " + phone);
+		System.out.println("phone number : " + phone+ "\n");
 	}
 	
 }
