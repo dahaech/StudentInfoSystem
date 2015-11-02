@@ -39,10 +39,4 @@ public class Add {
 	private String addToDB(int id, String name, String department, String phone){
 		return "INSERT INTO StudentInfoTable VALUES("+id+", '"+name+"', '"+department+"','"+phone+"');";
 	}
-
-	public void add(int id2, String name2, String department2, String phone2) {
-		// TODO Auto-generated method stub
-		
-	}
-	
 }
