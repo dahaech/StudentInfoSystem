@@ -52,7 +52,6 @@ public class View {
 				
 				isThereAnyData = result.next();
 			}
-			
 			con.close();
 			
 		}catch(Exception e){
@@ -64,7 +63,7 @@ public class View {
 		System.out.println("id           : " + id);
 		System.out.println("name         : " + name);
 		System.out.println("department   : " + department);
-		System.out.println("phone number : " + phone+ "\n");
+		System.out.println("phone number : " + phone);
 	}
 	
 }
