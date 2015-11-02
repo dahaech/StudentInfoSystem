@@ -3,10 +3,12 @@ import java.sql.*;
 import org.h2.*;
 
 public class Add {
+
 	int id;
 	String name, department, phone;
 	
 	public void addStudent(int id, String name, String department, String phone){
+
 		Connection con = null;
 		Statement stmt = null;
 		try{
@@ -39,4 +41,5 @@ public class Add {
 	private String addToDB(int id, String name, String department, String phone){
 		return "INSERT INTO StudentInfoTable VALUES("+id+", '"+name+"', '"+department+"','"+phone+"');";
 	}
+
 }
